@@ -8,11 +8,11 @@ namespace Condition
 {
     public interface ICondition
     {
-        bool CheckCondition(object operand );
+        bool CheckCondition(object operand);
     }
     public class Divisor : ICondition
     {
-        private int _divisor;
+        private long _divisor;
         public Divisor(int divisor)
         {
             _divisor = divisor;
@@ -20,18 +20,30 @@ namespace Condition
         public bool CheckCondition(object firstOperand)
         {
             bool returnValue = false;
-            Exception conditionException;
-            if (CheckOperandValidity(firstOperand, out conditionException))
-                returnValue = (Convert.ToInt32(firstOperand) % _divisor == 0);
-            else
-                throw conditionException;
-
-            return returnValue;
+            try
+            {
+                CheckOperandValidity(firstOperand);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return returnValue = (Convert.ToInt64(firstOperand) % _divisor == 0);
         }
-        private bool CheckOperandValidity(object firstOperand, out Exception conditionException)
+        private bool CheckOperandValidity(object firstOperand)
         {
-            conditionException = new Exception();
-            
+            long longInput;
+            try
+            {
+                longInput = Convert.ToInt64(firstOperand);
+            }
+            catch
+            {
+                throw new Exception("Invalid input, please make sure to enter a natural number");
+            }
+            if (longInput < 0)
+                throw new Exception("Invalid input, the input cannot be negative");
+
             return true;
         }
     }
@@ -40,18 +52,18 @@ namespace Condition
         public bool CheckCondition(object operand)
         {
             bool returnValue = false;
-            Exception conditionException;
-            if (CheckOperandValidity(operand, out conditionException))
-                returnValue = ((string)operand).All(c => char.IsUpper(c));
-            else
-                throw conditionException;
-
-            return returnValue;
+            try
+            {
+                CheckOperandValidity(operand);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return returnValue = ((string)operand).All(c => char.IsUpper(c));
         }
-        private bool CheckOperandValidity(object firstOperand, out Exception conditionException)
+        private bool CheckOperandValidity(object firstOperand)
         {
-            conditionException = new Exception();
-
             return true;
         }
     }

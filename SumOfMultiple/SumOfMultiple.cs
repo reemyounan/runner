@@ -15,23 +15,38 @@ namespace SumOfMultiple
         }
         public override string Solve(string input)
         {
-            if (CheckInputValidity(input))
+            try
             {
-                return Convert.ToString(getSum(Convert.ToInt32(input)));
+                CheckInputValidity(input);
             }
-            return "";
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Convert.ToString(getSum(Convert.ToInt64(input)));  
         }
         public override bool CheckInputValidity(string input)
         {
+            long longInput;
+            try
+            {
+                longInput = Convert.ToInt64(input);
+            }
+            catch {
+                throw new Exception("Invalid input, please make sure to enter a natural number");
+            }
+            if (longInput < 0)
+                throw new Exception("Invalid input, the input cannot be negative");
+
             return true;
         }
-        private int getSum(int upperBound)
+        private long getSum(long upperBound)
         {
-            int sums = 0;
+            long sums = 0;
             ICondition MultipleOfThree = new Divisor(3);
             ICondition MultipleOfFive = new Divisor(5);
 
-            for (int i = 1; i < upperBound; i++)
+            for (long i = 1; i < upperBound; i++)
             {
                 if (MultipleOfThree.CheckCondition(i) ||
                     MultipleOfFive.CheckCondition(i))
