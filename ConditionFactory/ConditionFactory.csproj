@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0CD01210-D916-4649-B607-8C264F2B4D3C}</ProjectGuid>
+    <ProjectGuid>{00B0F520-23EA-4322-96C7-DEE08569095D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProblemFactory</RootNamespace>
-    <AssemblyName>ProblemFactory</AssemblyName>
+    <RootNamespace>ConditionFactory</RootNamespace>
+    <AssemblyName>ConditionFactory</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,25 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FactoryProblem.cs" />
+    <Compile Include="FactoryCondition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Condition\Condition.csproj">
       <Project>{db04b87d-98d7-47f2-8aa2-c27d2958fad8}</Project>
       <Name>Condition</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProblemsPool\Problem.csproj">
-      <Project>{e80ce7bf-56db-4810-abca-c06494716b48}</Project>
-      <Name>Problem</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SequenceAnalysis\SequenceAnalysis.csproj">
-      <Project>{efba7881-e44c-444c-a0ff-70875678418f}</Project>
-      <Name>SequenceAnalysis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SumOfMultiple\SumOfMultiple.csproj">
-      <Project>{1618a380-0ad4-4642-94b5-0ae05ad1987a}</Project>
-      <Name>SumOfMultiple</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Problem;
-
+using System.Collections.ObjectModel;
+using Condition;
 namespace ProblemFactory
 {
     public static class FactoryProblem
@@ -12,8 +13,18 @@ namespace ProblemFactory
         static FactoryProblem()
         {
             #region add problems
-            _problems.Add(1, new SumOfMultiple.SumOfMultiple());
+
+            #region create conditions for multiples of 3 and 5
+            
+            Collection<Condition.Divisor> customDivisors = new Collection<Divisor>();
+            customDivisors.Add(new Divisor(3));
+            customDivisors.Add(new Divisor(5));
+            #endregion
+
+            _problems.Add(1, new SumOfMultiple.SumOfMultiple(
+                "Sum Of Multiple: Sums all natural numbers that are a multiple of 3 or 5 below a limit provided as input", customDivisors));
             _problems.Add(2, new SequenceAnalysis.SequenceAnalysis());
+
             #endregion
 
             #region add problem statement
