@@ -25,6 +25,8 @@ namespace SequenceAnalysis
         }
         public override bool CheckInputValidity(string input)
         {
+            if (input.Length == 0)
+                throw new Exception("String cannot be empty");
             return true;
         }
 
