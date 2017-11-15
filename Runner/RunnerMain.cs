@@ -37,10 +37,12 @@ namespace Runner
                 {
                     try
                     {
+                        #region create instance of the requested problem using the problem factory and proceed with solving the probelm
                         currentProblemToSolve = FactoryProblem.Create(Int32.Parse(ProblemToSolve));
                         Console.WriteLine("\r\nPlease input your data and press ENTER.");
                         string UserInput = Console.ReadLine();
                         Console.WriteLine("\r\nSolution: " + currentProblemToSolve.Solve(UserInput));
+                        #endregion
                     }
                     catch (Exception ex)
                     {

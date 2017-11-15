@@ -12,15 +12,19 @@ namespace SumOfMultiple
     public class SumOfMultiple : SolvableProblem
     {
         private Collection<Divisor> _conditions = null;
+
         public SumOfMultiple()
         {
             _problemStatement = "Sum Of Multiple: Sums all natural numbers multiples below a limit provided as input";
         }
+
         public SumOfMultiple(string customProblemStatment, Collection<Divisor> conditions)
         {
-            _conditions = conditions; //this step is done to allow creating sum of multiples that are different from 3 and 5 
+            //This constructor is defined to allow creating sum of multiples of any numbers
+            _conditions = conditions; 
             _problemStatement = customProblemStatment;
         }
+
         public override string Solve(string input)
         {
             try
@@ -33,6 +37,7 @@ namespace SumOfMultiple
             }
             return Convert.ToString(getSum(Convert.ToInt64(input)));
         }
+
         public override bool CheckInputValidity(string input)
         {
             long longInput;
@@ -49,6 +54,7 @@ namespace SumOfMultiple
 
             return true;
         }
+
         private long getSum(long upperBound)
         {
             long sums = 0;

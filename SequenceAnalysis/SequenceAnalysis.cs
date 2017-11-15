@@ -14,15 +14,16 @@ namespace SequenceAnalysis
         {
             _problemStatement = "Sequence Analysis: Finds the uppercase words in a string and orders their characters alphabetically.";
         }
+
         public override string Solve(string input)
         {
             if (CheckInputValidity(input))
             {
-
                 return SortLetters(GetCapitalWords(input));
             }
             return "";
         }
+
         public override bool CheckInputValidity(string input)
         {
             if (input.Length == 0)
@@ -44,6 +45,7 @@ namespace SequenceAnalysis
             }
             return capitalWords;
         }
+
         private string SortLetters(string input)
         {
             return string.Concat(input.OrderBy(c => c));
